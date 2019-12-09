@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete</title>
+</head>
+<body>
+<input type="button" value="Back home" onclick="window.location.href='/country-list' " />
+<h2>Are you sure to delete this country?</h2>
+<form method="post" th:object="${countries}" th:action="@{/country-delete}">
+    <input type="hidden" th:field="*{id}"/>
+    <table>
+        <tr>
+            <td><b>Country name:</b></td>
+            <td th:text="${countries.getCountryName()}"></td>
+        </tr>
+        <tr>
+            <td><button type="submit">Yes</button> </td>
+            <td><input type="button" value="No" onclick="window.location.href='/country-list' " /></td>
+        </tr>
+    </table>
+
+</form>
+</body>
+</html>

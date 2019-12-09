@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th ="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>phone</title>
+</head>
+<body>
+<input type="button" value="Create new city" onclick="window.location.href='/city-create' " />
+<h1>Cities list</h1>
+
+<table border="1">
+    <tr>
+        <th>City name</th>
+        <th>Country name</th>
+        <th>City Area</th>
+        <th>City Population</th>
+        <th>GDP</th>
+        <th>Description</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>Detail</th>
+
+    </tr>
+    <th:block th:each="p:${cities}">
+        <tr>
+            <td th:text="${p.getCityName()}"></td>
+            <td th:text="${p.getCountry().countryName}"></td>
+            <td th:text="${p.getArea()}"></td>
+            <td th:text="${p.getPopulation()}"></td>
+            <td th:text="${p.getGdp()}"></td>
+            <td th:text="${p.getDescription()}"></td>
+            <td><a th:href="@{/city-edit/__${p.getCityId()}__}">Edit</a></td>
+            <td><a th:href="@{/city-delete/__${p.getCityId()}__}">Delete</a></td>
+            <td><a th:href="@{/city-detail/__${p.getCityId()}__}">Detail</a></td>
+        </tr>
+    </th:block>
+</table>
+<input type="button" value="Return home page" onclick="window.location.href='../../..' " />
+</body>
+</html>

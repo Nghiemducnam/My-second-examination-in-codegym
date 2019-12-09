@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="back city list" onclick="window.location.href='/city-list' " />
+<h1> City detail</h1>
+<form th:action="@{/city-delete}" method="post" th:object="${cities}">
+    <input th:type="hidden" name="id" th:field="*{cityId}"/>
+    <table>
+        <tr>
+            <td><b>city name:</b></td>
+            <td th:text="${cities.getCityName()}"></td>
+        </tr>
+        <tr>
+            <td><b>Nation:</b></td>
+            <td th:text="${cities.getCountry().countryName}"></td>
+        </tr>
+        <tr>
+            <td><b>Area:</b></td>
+            <td th:text="${cities.getArea()}"></td>
+        </tr>
+        <tr>
+            <td><b>Population:</b></td>
+            <td th:text="${cities.getPopulation()}"></td>
+        </tr>
+        <tr>
+            <td><b>GDP:</b></td>
+            <td th:text="${cities.getGdp()}"></td>
+        </tr>
+        <tr>
+            <td><b>Description:</b></td>
+            <td th:text="${cities.getDescription()}"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

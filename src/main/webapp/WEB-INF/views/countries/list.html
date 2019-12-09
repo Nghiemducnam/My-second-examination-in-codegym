@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Country</title>
+</head>
+<body>
+<input type="button" value="Create new country" onclick="window.location.href='/country-create' " />|
+<input type="button" value="Return home page" onclick="window.location.href='../../..' " />
+<h1>Countries list!</h1>
+<table  border="1">
+    <tr>
+        <th>Country name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <th:block th:each="i : ${countries}">
+        <tr>
+            <td th:text="${i.getCountryName()}"></td>
+            <td><a th:href="@{/country-edit/__${i.getId()}__}">Edit</a></td>
+            <td><a th:href="@{/country-delete/__${i.getId()}__}">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>
